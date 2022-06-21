@@ -30,11 +30,11 @@ exports.register = async(userFields) => {
 
 exports.login = async (email,password) => {
     
-    if(!email || !password) throw ({code:409, message:"missing data"})
-    const eUser = await userController.read({email} , "+password");
-if(eUser.length==0) throw ({code:404, message:"user not found"})
-if (password !== eUser[0].password) throw ({code:503, message:"password mismatch"})
-return  createToken(eUser[0]._id);
+    if(!email || !password) throw ({code:403, message:"missing data"})
+    const eUser = await userController.readOne({email} , "+password");
+if(!eUser) throw ({code:404, message:"user not found"})
+if (password !== eUser.password) throw ({code:503, message:"password mismatch"})
+return  createToken(eUser._id);
 }
 
 

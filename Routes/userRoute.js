@@ -4,16 +4,17 @@ const userLogic = require('../BL/userLogic');
 const auth = require('../middlewere/auth');
 
 
-router.all('/test', auth, (req, res) => {
-    res.send("test")
-})
+// router.all('/test', auth, (req, res) => {
+//     res.send("test")
+// })
 
 
 
 router.post('/login', async (req, res) => {
 
     try {
-        res.send(await userLogic.login(req.body.email, req.body.password))
+        const token = await userLogic.login(req.body)
+        res.send(token)
     }
     catch (err) {
         console.log(err.message);

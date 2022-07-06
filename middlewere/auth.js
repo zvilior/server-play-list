@@ -1,4 +1,4 @@
-const jwt = require("jsonewebtoken");
+const jwt = require("jsonwebtoken")
 const { validateToken } = require('./jwt')
 
 const authJWT = (req, res, next) => {

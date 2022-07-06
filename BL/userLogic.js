@@ -1,5 +1,5 @@
 const userController = require('../DL/controllers/userController')
-const jwtFn = require('../middleware/jwt')
+const jwtFn = require('../middlewere/jwt')
 
 
 async function login(loginData){

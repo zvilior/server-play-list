@@ -1,7 +1,19 @@
-
 const userController = require('../DL/controllers/userController')
+const jwtFn = require('../middleware/jwt')
 
-const {crateToken, createToken}= require ("./jwt");
+
+async function login(loginData){
+  const password = loginData.password;
+  const email = loginData.email;
+  const user = await userController.readOne({email: email}, "+ password")
+if (!user) throw({code:401, message:"not exist"})
+if (user.password !== password) throw({code:401, message:"unauthorized"})
+const token = jwtFn.createToken(user._id)
+return token
+}
+
+
+module.exports = {login}
 
 exports.getAllUsers = async() => {
     const users = await userController.read({});
@@ -24,18 +36,11 @@ exports.updateUser = (filter,newData) => {
 }
 
 exports.register = async(userFields) => {
-    if(userFields.length) throw ({code:400, message:"this email is already in use"})
+    if(!userFields) throw ({code:400, message:"this email is already in use"})
       userController.create(userFields)
 }
 
-exports.login = async (email,password) => {
-    
-    if(!email || !password) throw ({code:403, message:"missing data"})
-    const eUser = await userController.readOne({email} , "+password");
-if(!eUser) throw ({code:404, message:"user not found"})
-if (password !== eUser.password) throw ({code:503, message:"password mismatch"})
-return  createToken(eUser._id);
-}
+
 
 
 

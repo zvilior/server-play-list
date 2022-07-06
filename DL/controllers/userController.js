@@ -1,8 +1,5 @@
-// require('../db').connect()
 
 const { userModel } = require('../models/user')
-
-
 
 async function create(data) {
     return await userModel.create(data);

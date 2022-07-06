@@ -7,8 +7,10 @@ const port = process.env.PORT || 3000;
 
 const router = require('./Routes')
 
+
 app.use(express.json())
 app.use(require('cors')())
+app.get("/", (req, res) => { res.send("hello baruch!"); })
 
 app.use("/api", router)
 

@@ -3,7 +3,6 @@ const router = express.Router();
 const userLogic = require('../BL/userLogic');
 const auth = require('../middlewere/auth');
 
-// router.use(auth)
 
 router.all('/test', auth, (req, res) => {
     res.send("test")
@@ -15,8 +14,8 @@ router.post('/login', async (req, res) => {
 
     try {
         res.send(await userLogic.login(req.body.email, req.body.password))
-        // res.send({})
-    } catch (err) {
+    }
+    catch (err) {
         console.log(err.message);
         res.send(err.message);
     }
@@ -93,12 +92,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-// router.post('/edit/:id', async (req, res) => {
-//     try {
-//         const { firstName, lastName, email, password, city, gender } = req.body;
-//         const new = await userLogic.updateUser()         
 
-//     );
 
 
 

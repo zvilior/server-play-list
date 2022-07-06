@@ -1,24 +1,19 @@
-const { validateToken } = require('../BL/jwt')
-const { readOne } = require('../DL/controllers/userController')
+const jwt = require('jsonewebtoken');
+const { validateToken } = require('./jwt')
 
-async function auth(req, res, next) {
-    try {
-        console.log("test");
-        const token = req.headers.authorization
-
-
-        const decode = validateToken(token)
-
-        const eUser = await readOne({ _id: decode.id })
-        if (!eUser) throw ''
-        // if (!eUserion != "admin") throw ''
-
-        next();
-
-    } catch (err) {
-        res.status(503).send({ message: 'not authorized' })
+const authJWT = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    if (authHeader) {
+        const token = authHeader.split("")[1];
+        jwt.verify(token, process.env.SECRET_JWT, (err, verifyToken) => {
+            if (err) {
+                return res.sendstatus(403);
+            }
+            req._id = validateToken._id;
+            next();
+        });
+    } else {
+        res.sendstatus(401);
     }
-
-
-}
-module.exports = auth
+};
+module.exports = { authJWT }

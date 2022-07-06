@@ -1,4 +1,4 @@
-const jwt = require('jsonewebtoken');
+const jwt = require("jsonewebtoken");
 const { validateToken } = require('./jwt')
 
 const authJWT = (req, res, next) => {
@@ -17,3 +17,4 @@ const authJWT = (req, res, next) => {
     }
 };
 module.exports = { authJWT }
+"bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjlmMzBmODA1NjA1OWIwODZlMmM1NjQiLCJpYXQiOjE2NTY5NDUxNDAsImV4cCI6MTY1Njk0NTc0MH0.7lZKZG0Uha6og9tXh2XJGXZIqhiGPBkmL0SW1I6ynvw"

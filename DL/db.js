@@ -1,7 +1,6 @@
 //מטרת הקובץ התחברות לשרת מקומי או מרוחק
 
 const mongoose = require('mongoose') //יבוא
-// const MONGO_URL = 'mongodb+srv://zvilior:zml943MDB@cluster0.fedki.mongodb.net/test1?retryWrites=true&w=majority'
 const MONGO_URL = process.env.MONGO_URL
 
 const connect = async () => {

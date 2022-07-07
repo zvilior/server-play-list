@@ -9,7 +9,7 @@ async function login(loginData){
 if (!user) throw({code:401, message:"not exist"})
 if (user.password !== password) throw({code:401, message:"unauthorized"})
 const token = jwtFn.createToken(user._id)
-return token
+return {token:token, user:user}
 }
 
 

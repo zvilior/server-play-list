@@ -14,7 +14,7 @@ router.post('/login', async (req, res) => {
 
     try {
         const token = await userLogic.login(req.body)
-        res.send(token)
+        res.send({ token: token })
     }
     catch (err) {
         console.log(err.message);

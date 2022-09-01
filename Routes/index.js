@@ -4,12 +4,10 @@ const router = express.Router()
 
 
 const usersRouter = require('./userRoute')
-// const itemsRouter = require('./itemRoute')
-// const ordersRouter = require('./orderRoute')
+const playListsRouter = require('./playListsRoute')
 
 
 router.use("/users", usersRouter);
-// router.use("/items", itemsRouter);
-// router.use("/orders", ordersRouter);
+router.use("/playlists", playListsRouter);
 
 module.exports = router;

@@ -1,4 +1,3 @@
-require('../db').connect()
 
 const mongoose = require('mongoose');
 
@@ -16,15 +15,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    password: {
+
+    favore: {
         type: String,
-        require: true,
-        select: false
-    },
-    phone: {
-        type: Number,
-        require: true,
-        // unique
     },
     craeteDate: {
         type: Date,
@@ -49,11 +42,17 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    // token: {
-    //     type: String,
-    //     select: false
-    // }
 
+    salt: {
+        type: String,
+        required: true,
+        select: false
+    },
+    hashedPassword: {
+        type: String,
+        required: true,
+        select: false
+    },
 
 
 })

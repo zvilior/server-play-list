@@ -21,17 +21,5 @@ app.listen(port, () => console.log(`server is running => ${port}`))
 require('./DL/db').connect();
 
 
-//GET - www.loc.com
-
-
-//GET - לבקש www.loc.com/api/users
-
-//POST  - ליצור www.loc.com/api/users
-//body {name:"moshe", age:29}
-
-//PUT - לעדכן www.loc.com/api/users/1
-//body {name:"moshe", age:30}
-
-//DELETE - למחוק
 
 
